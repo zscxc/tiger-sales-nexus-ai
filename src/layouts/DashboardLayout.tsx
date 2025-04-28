@@ -13,11 +13,11 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) =>
     <SidebarProvider>
       <div className="min-h-screen flex w-full bg-gray-50">
         <Navigation />
-        <SidebarRail />
+        <SidebarRail className="bg-white hover:bg-gray-100 transition-colors" />
         <main className="flex-1 p-0">
           <div className="container mx-auto px-4 py-6">
             <div className="md:hidden mb-4">
-              <SidebarTrigger className="flex items-center justify-center h-10 w-10 rounded-md border bg-white shadow-sm" />
+              <SidebarTrigger className="flex items-center justify-center h-10 w-10 rounded-md border bg-white shadow-sm hover:bg-gray-50 transition-colors" />
             </div>
             {children}
           </div>
