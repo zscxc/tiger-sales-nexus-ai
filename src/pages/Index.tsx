@@ -27,27 +27,27 @@ const Index = () => {
           <TabsTrigger value="purchase">采购订单</TabsTrigger>
           <TabsTrigger value="ai">AI 洞察</TabsTrigger>
         </TabsList>
+        
+        <TabsContent value="dashboard" className="mt-0 space-y-6">
+          <AnalyticsDashboard />
+        </TabsContent>
+        
+        <TabsContent value="orders" className="mt-0">
+          <OrderImport />
+        </TabsContent>
+        
+        <TabsContent value="products" className="mt-0">
+          <ProductCodes />
+        </TabsContent>
+        
+        <TabsContent value="purchase" className="mt-0">
+          <PurchaseOrders />
+        </TabsContent>
+        
+        <TabsContent value="ai" className="mt-0">
+          <AIInsights />
+        </TabsContent>
       </Tabs>
-      
-      <TabsContent value="dashboard" className="mt-0 space-y-6">
-        <AnalyticsDashboard />
-      </TabsContent>
-      
-      <TabsContent value="orders" className="mt-0">
-        <OrderImport />
-      </TabsContent>
-      
-      <TabsContent value="products" className="mt-0">
-        <ProductCodes />
-      </TabsContent>
-      
-      <TabsContent value="purchase" className="mt-0">
-        <PurchaseOrders />
-      </TabsContent>
-      
-      <TabsContent value="ai" className="mt-0">
-        <AIInsights />
-      </TabsContent>
     </DashboardLayout>
   );
 };
