@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { DashboardLayout } from '@/layouts/DashboardLayout';
 import { DashboardHeader } from '@/components/Dashboard/DashboardHeader';
 import { OrderImport } from '@/components/Dashboard/OrderImport';
@@ -11,6 +11,23 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 
 const Index = () => {
   const [activeTab, setActiveTab] = useState('dashboard');
+
+  // 监听从侧边栏发来的切换标签事件
+  useEffect(() => {
+    const handleSwitchTab = (e: CustomEvent) => {
+      if (e.detail && e.detail.tab) {
+        setActiveTab(e.detail.tab);
+      }
+    };
+
+    // 添加事件监听
+    window.addEventListener('switch-tab', handleSwitchTab as EventListener);
+
+    // 清理函数
+    return () => {
+      window.removeEventListener('switch-tab', handleSwitchTab as EventListener);
+    };
+  }, []);
 
   return (
     <DashboardLayout>
@@ -26,6 +43,7 @@ const Index = () => {
           <TabsTrigger value="products">产品编码</TabsTrigger>
           <TabsTrigger value="purchase">采购订单</TabsTrigger>
           <TabsTrigger value="ai">AI 洞察</TabsTrigger>
+          <TabsTrigger value="inventory">库存查询</TabsTrigger>
         </TabsList>
         
         <TabsContent value="dashboard" className="mt-0 space-y-6">
@@ -46,6 +64,13 @@ const Index = () => {
         
         <TabsContent value="ai" className="mt-0">
           <AIInsights />
+        </TabsContent>
+        
+        <TabsContent value="inventory" className="mt-0">
+          <div className="p-4 bg-white rounded-lg shadow">
+            <h2 className="text-xl font-bold mb-4">库存查询</h2>
+            <p className="text-muted-foreground">此功能正在开发中，敬请期待。</p>
+          </div>
         </TabsContent>
       </Tabs>
     </DashboardLayout>
