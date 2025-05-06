@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Input } from '@/components/ui/input';
@@ -29,9 +28,13 @@ export const DataTable: React.FC<DataTableProps> = ({
 
   const filteredData = searchable && searchTerm
     ? data.filter(item =>
-        Object.values(item).some(
-          value => String(value).toLowerCase().includes(searchTerm.toLowerCase())
-        )
+        Object.entries(item)
+          .filter(([key]) => key !== 'actions') // Don't search in actions column
+          .some(
+            ([_, value]) => 
+              typeof value === 'string' && 
+              value.toLowerCase().includes(searchTerm.toLowerCase())
+          )
       )
     : data;
 
@@ -39,6 +42,15 @@ export const DataTable: React.FC<DataTableProps> = ({
   const startIndex = currentPage * pageSize;
   const endIndex = startIndex + pageSize;
   const currentData = filteredData.slice(startIndex, endIndex);
+
+  const renderCellContent = (row: Record<string, any>, key: string) => {
+    // If it's a React element (like buttons in actions column), return it directly
+    if (React.isValidElement(row[key])) {
+      return row[key];
+    }
+    // Otherwise, render as string
+    return row[key];
+  };
 
   return (
     <div className="w-full">
@@ -79,7 +91,7 @@ export const DataTable: React.FC<DataTableProps> = ({
                 <TableRow key={rowIndex}>
                   {columns.map((column) => (
                     <TableCell key={`${rowIndex}-${column.key}`}>
-                      {row[column.key]}
+                      {renderCellContent(row, column.key)}
                     </TableCell>
                   ))}
                 </TableRow>
