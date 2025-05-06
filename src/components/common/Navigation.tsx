@@ -20,7 +20,9 @@ import {
   Package, 
   ChartBar, 
   Brain,
-  Search
+  Search,
+  FileText,
+  Users
 } from 'lucide-react';
 import { toast } from 'sonner';
 
@@ -41,8 +43,10 @@ export const Navigation = () => {
     switch(tabId) {
       case 'dashboard': return '数据中心';
       case 'orders': return '订单导入';
-      case 'products': return '产品编码';
+      case 'sales': return '销售订单';
       case 'purchase': return '采购订单';
+      case 'suppliers': return '供应商管理';
+      case 'products': return '产品编码';
       case 'ai': return 'AI 洞察';
       case 'inventory': return '库存查询';
       default: return tabId;
@@ -52,8 +56,10 @@ export const Navigation = () => {
   const menuItems = [
     { title: '数据中心', icon: Database, id: 'dashboard' },
     { title: '订单导入', icon: Tag, id: 'orders' },
-    { title: '产品编码', icon: Package, id: 'products' },
+    { title: '销售订单', icon: FileText, id: 'sales' },
     { title: '采购订单', icon: ChartBar, id: 'purchase' },
+    { title: '供应商管理', icon: Users, id: 'suppliers' },
+    { title: '产品编码', icon: Package, id: 'products' },
     { title: 'AI 洞察', icon: Brain, id: 'ai' },
     { title: '库存查询', icon: Search, id: 'inventory' },
   ];

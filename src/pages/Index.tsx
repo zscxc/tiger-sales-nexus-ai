@@ -9,6 +9,9 @@ import { AnalyticsDashboard } from '@/components/Dashboard/AnalyticsDashboard';
 import { AIInsights } from '@/components/Dashboard/AIInsights';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { BasicSalesData } from '@/components/Dashboard/BasicSalesData';
+import { SalesOrderDetails } from '@/components/Dashboard/SalesOrderDetails';
+import { PurchaseOrderDetails } from '@/components/Dashboard/PurchaseOrderDetails';
+import { SupplierManagement } from '@/components/Dashboard/SupplierManagement';
 
 const Index = () => {
   const [activeTab, setActiveTab] = useState('dashboard');
@@ -41,8 +44,10 @@ const Index = () => {
         <TabsList>
           <TabsTrigger value="dashboard">数据中心</TabsTrigger>
           <TabsTrigger value="orders">订单导入</TabsTrigger>
-          <TabsTrigger value="products">产品编码</TabsTrigger>
+          <TabsTrigger value="sales">销售订单</TabsTrigger>
           <TabsTrigger value="purchase">采购订单</TabsTrigger>
+          <TabsTrigger value="suppliers">供应商管理</TabsTrigger>
+          <TabsTrigger value="products">产品编码</TabsTrigger>
           <TabsTrigger value="ai">AI 洞察</TabsTrigger>
           <TabsTrigger value="inventory">库存查询</TabsTrigger>
         </TabsList>
@@ -58,12 +63,24 @@ const Index = () => {
           <OrderImport />
         </TabsContent>
         
-        <TabsContent value="products" className="mt-0">
-          <ProductCodes />
+        <TabsContent value="sales" className="mt-0">
+          <SalesOrderDetails />
         </TabsContent>
         
         <TabsContent value="purchase" className="mt-0">
           <PurchaseOrders />
+        </TabsContent>
+        
+        <TabsContent value="purchase-details" className="mt-0">
+          <PurchaseOrderDetails />
+        </TabsContent>
+        
+        <TabsContent value="suppliers" className="mt-0">
+          <SupplierManagement />
+        </TabsContent>
+        
+        <TabsContent value="products" className="mt-0">
+          <ProductCodes />
         </TabsContent>
         
         <TabsContent value="ai" className="mt-0">

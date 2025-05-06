@@ -5,14 +5,14 @@ import { Button } from '@/components/ui/button';
 import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
 import { DataTable } from '@/components/common/DataTable';
-import { Download, Clock, Send } from 'lucide-react';
+import { Download, Clock, ArrowRight } from 'lucide-react';
 import { toast } from 'sonner';
 
 export const PurchaseOrders = () => {
   const columns = [
     { key: 'id', header: '采购订单号', width: '15%' },
     { key: 'date', header: '创建日期', width: '15%' },
-    { key: 'platform', header: '来源平台', width: '15%' },
+    { key: 'supplier', header: '供应商', width: '15%' },
     { key: 'items', header: '商品数', width: '10%' },
     { key: 'amount', header: '金额', width: '15%' },
     { key: 'status', header: '状态', width: '15%' },
@@ -24,13 +24,13 @@ export const PurchaseOrders = () => {
     {
       id: 'PO-2023-0001',
       date: '2023-04-15',
-      platform: '雅虎',
+      supplier: '雅虎',
       items: '12',
       amount: '¥45,600',
       status: '待发送',
       actions: (
         <Button size="sm" onClick={() => handleSendPO('PO-2023-0001')} className="bg-tiger-600 hover:bg-tiger-700">
-          <Send className="h-3 w-3 mr-1" />
+          <ArrowRight className="h-3 w-3 mr-1" />
           发送
         </Button>
       ),
@@ -38,7 +38,7 @@ export const PurchaseOrders = () => {
     {
       id: 'PO-2023-0002',
       date: '2023-04-16',
-      platform: '乐天',
+      supplier: '乐天',
       items: '8',
       amount: '¥23,400',
       status: '已发送',
@@ -52,7 +52,7 @@ export const PurchaseOrders = () => {
     {
       id: 'PO-2023-0003',
       date: '2023-04-17',
-      platform: '亚马逊',
+      supplier: '亚马逊',
       items: '15',
       amount: '¥67,800',
       status: '已确认',
@@ -66,7 +66,7 @@ export const PurchaseOrders = () => {
   ];
 
   const handleSendPO = (id: string) => {
-    toast.success(`订单 ${id} 已成功发送至总部`);
+    toast.success(`订单 ${id} 已成功发送至供应商`);
   };
 
   const handleScheduleChange = (checked: boolean) => {
@@ -78,7 +78,7 @@ export const PurchaseOrders = () => {
       <CardHeader className="flex flex-row items-center justify-between">
         <div>
           <CardTitle>采购订单管理</CardTitle>
-          <CardDescription>管理向总部推送的采购订单</CardDescription>
+          <CardDescription>管理向供应商推送的采购订单</CardDescription>
         </div>
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-2">
