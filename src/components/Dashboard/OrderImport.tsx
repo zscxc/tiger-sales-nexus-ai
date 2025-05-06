@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { FileUploadZone } from '@/components/common/FileUploadZone';
 import { toast } from 'sonner';
+import { Upload } from 'lucide-react';
 
 export const OrderImport = () => {
   const [importMethod, setImportMethod] = useState<'file' | 'api'>('file');
@@ -23,7 +24,7 @@ export const OrderImport = () => {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>订单数据导入</CardTitle>
+        <CardTitle className="text-xl">订单数据导入</CardTitle>
         <CardDescription>
           从平台导入销售订单数据。支持表格导入或API自动拉取。
         </CardDescription>
@@ -43,6 +44,13 @@ export const OrderImport = () => {
             />
             <div className="flex justify-end">
               <Button variant="outline" className="mr-2">取消</Button>
+              <Button 
+                onClick={() => handleFileUpload([])} 
+                className="bg-tiger-600 hover:bg-tiger-700"
+              >
+                <Upload className="h-4 w-4 mr-2" />
+                导入订单
+              </Button>
             </div>
           </TabsContent>
           <TabsContent value="api" className="space-y-4 pt-4">
@@ -84,7 +92,13 @@ export const OrderImport = () => {
             </div>
             <div className="flex justify-end">
               <Button variant="outline" className="mr-2">取消</Button>
-              <Button onClick={handleAPIImport} className="bg-tiger-600 hover:bg-tiger-700">开始导入</Button>
+              <Button 
+                onClick={handleAPIImport} 
+                className="bg-tiger-600 hover:bg-tiger-700"
+              >
+                <Upload className="h-4 w-4 mr-2" />
+                开始导入
+              </Button>
             </div>
           </TabsContent>
         </Tabs>

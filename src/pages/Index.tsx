@@ -8,6 +8,7 @@ import { PurchaseOrders } from '@/components/Dashboard/PurchaseOrders';
 import { AnalyticsDashboard } from '@/components/Dashboard/AnalyticsDashboard';
 import { AIInsights } from '@/components/Dashboard/AIInsights';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
+import { BasicSalesData } from '@/components/Dashboard/BasicSalesData';
 
 const Index = () => {
   const [activeTab, setActiveTab] = useState('dashboard');
@@ -51,6 +52,9 @@ const Index = () => {
         </TabsContent>
         
         <TabsContent value="orders" className="mt-0">
+          <div className="grid gap-4 mb-6">
+            <BasicSalesData />
+          </div>
           <OrderImport />
         </TabsContent>
         
