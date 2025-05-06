@@ -1,0 +1,95 @@
+
+{
+  "app": {
+    "title": "Tiger Sales Nexus AI",
+    "subtitle": "AI 驱动的网络销售管理平台"
+  },
+  "nav": {
+    "dashboard": "数据中心",
+    "orders": "订单导入",
+    "sales": "销售订单",
+    "purchase": "采购订单",
+    "suppliers": "供应商管理",
+    "products": "产品编码",
+    "ai": "AI 洞察",
+    "inventory": "库存查询",
+    "mainNavigation": "主导航"
+  },
+  "metrics": {
+    "todaySales": "今日销售额",
+    "todayOrders": "今日订单量",
+    "conversionRate": "销售转化率",
+    "newCustomers": "新增客户",
+    "compared": "较昨日"
+  },
+  "common": {
+    "view": "查看",
+    "delete": "删除",
+    "edit": "编辑",
+    "cancel": "取消",
+    "confirm": "确认",
+    "import": "导入",
+    "export": "导出",
+    "add": "新增",
+    "search": "搜索",
+    "filter": "筛选",
+    "platform": "平台",
+    "date": "日期",
+    "status": "状态",
+    "actions": "操作",
+    "allPlatforms": "全部平台",
+    "switch": "切换到",
+    "comingSoon": "此功能正在开发中，敬请期待。"
+  },
+  "periods": {
+    "day": "今日",
+    "week": "本周",
+    "month": "本月",
+    "quarter": "本季度",
+    "year": "今年",
+    "dateRange": "日期范围"
+  },
+  "orderImport": {
+    "title": "订单数据导入",
+    "description": "从平台导入销售订单数据。支持表格导入或API自动拉取。",
+    "importOrderData": "导入订单数据",
+    "fileImport": "文件导入",
+    "apiImport": "API导入",
+    "selectPlatforms": "选择要导入的平台",
+    "timeRange": "选择时间范围",
+    "startDate": "开始日期",
+    "endDate": "结束日期",
+    "startImport": "开始导入"
+  },
+  "sales": {
+    "title": "销售订单详情",
+    "description": "查看并管理来自各平台的销售订单",
+    "orderNumber": "销售订单号",
+    "createdDate": "创建日期",
+    "sourcePlatform": "来源平台",
+    "items": "商品数",
+    "amount": "金额"
+  },
+  "purchase": {
+    "title": "采购订单管理",
+    "description": "管理向供应商推送的采购订单",
+    "send": "发送",
+    "download": "下载",
+    "schedule": "定时推送",
+    "enableSchedule": "启用定时推送"
+  },
+  "products": {
+    "title": "产品编码管理",
+    "description": "管理与Tiger总部一致的产品编码映射",
+    "code": "产品编码",
+    "name": "产品名称",
+    "category": "产品类别",
+    "tigerCode": "Tiger总部编码",
+    "addProduct": "新增产品",
+    "mapped": "已映射",
+    "unmapped": "未映射"
+  },
+  "language": {
+    "selector": "语言"
+  }
+}

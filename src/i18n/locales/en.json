@@ -1,0 +1,95 @@
+
+{
+  "app": {
+    "title": "Tiger Sales Nexus AI",
+    "subtitle": "AI-powered Network Sales Management Platform"
+  },
+  "nav": {
+    "dashboard": "Data Center",
+    "orders": "Order Import",
+    "sales": "Sales Orders",
+    "purchase": "Purchase Orders",
+    "suppliers": "Supplier Management",
+    "products": "Product Codes",
+    "ai": "AI Insights",
+    "inventory": "Inventory Query",
+    "mainNavigation": "Main Navigation"
+  },
+  "metrics": {
+    "todaySales": "Today's Sales",
+    "todayOrders": "Today's Orders",
+    "conversionRate": "Conversion Rate",
+    "newCustomers": "New Customers",
+    "compared": "Compared to Yesterday"
+  },
+  "common": {
+    "view": "View",
+    "delete": "Delete",
+    "edit": "Edit",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "import": "Import",
+    "export": "Export",
+    "add": "Add",
+    "search": "Search",
+    "filter": "Filter",
+    "platform": "Platform",
+    "date": "Date",
+    "status": "Status",
+    "actions": "Actions",
+    "allPlatforms": "All Platforms",
+    "switch": "Switch to",
+    "comingSoon": "This feature is in development. Coming soon."
+  },
+  "periods": {
+    "day": "Today",
+    "week": "This Week",
+    "month": "This Month",
+    "quarter": "This Quarter",
+    "year": "This Year",
+    "dateRange": "Date Range"
+  },
+  "orderImport": {
+    "title": "Order Data Import",
+    "description": "Import sales order data from platforms. Supports table import or automatic API retrieval.",
+    "importOrderData": "Import Order Data",
+    "fileImport": "File Import",
+    "apiImport": "API Import",
+    "selectPlatforms": "Select platforms to import",
+    "timeRange": "Select time range",
+    "startDate": "Start date",
+    "endDate": "End date",
+    "startImport": "Start Import"
+  },
+  "sales": {
+    "title": "Sales Order Details",
+    "description": "View and manage sales orders from various platforms",
+    "orderNumber": "Sales Order Number",
+    "createdDate": "Created Date",
+    "sourcePlatform": "Source Platform",
+    "items": "Items",
+    "amount": "Amount"
+  },
+  "purchase": {
+    "title": "Purchase Order Management",
+    "description": "Manage purchase orders sent to suppliers",
+    "send": "Send",
+    "download": "Download",
+    "schedule": "Schedule",
+    "enableSchedule": "Enable scheduled push"
+  },
+  "products": {
+    "title": "Product Code Management",
+    "description": "Manage product code mappings consistent with Tiger headquarters",
+    "code": "Product Code",
+    "name": "Product Name",
+    "category": "Product Category",
+    "tigerCode": "Tiger HQ Code",
+    "addProduct": "Add Product",
+    "mapped": "Mapped",
+    "unmapped": "Unmapped"
+  },
+  "language": {
+    "selector": "Language"
+  }
+}

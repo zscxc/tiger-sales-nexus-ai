@@ -12,9 +12,11 @@ import { BasicSalesData } from '@/components/Dashboard/BasicSalesData';
 import { SalesOrderDetails } from '@/components/Dashboard/SalesOrderDetails';
 import { PurchaseOrderDetails } from '@/components/Dashboard/PurchaseOrderDetails';
 import { SupplierManagement } from '@/components/Dashboard/SupplierManagement';
+import { useTranslation } from 'react-i18next';
 
 const Index = () => {
   const [activeTab, setActiveTab] = useState('dashboard');
+  const { t } = useTranslation();
 
   // 监听从侧边栏发来的切换标签事件
   useEffect(() => {
@@ -36,20 +38,20 @@ const Index = () => {
   return (
     <DashboardLayout>
       <DashboardHeader
-        title="Tiger Sales Nexus AI"
-        subtitle="AI 驱动的网络销售管理平台"
+        title={t('app.title')}
+        subtitle={t('app.subtitle')}
       />
       
       <Tabs value={activeTab} onValueChange={setActiveTab} className="mb-6">
         <TabsList>
-          <TabsTrigger value="dashboard">数据中心</TabsTrigger>
-          <TabsTrigger value="orders">订单导入</TabsTrigger>
-          <TabsTrigger value="sales">销售订单</TabsTrigger>
-          <TabsTrigger value="purchase">采购订单</TabsTrigger>
-          <TabsTrigger value="suppliers">供应商管理</TabsTrigger>
-          <TabsTrigger value="products">产品编码</TabsTrigger>
-          <TabsTrigger value="ai">AI 洞察</TabsTrigger>
-          <TabsTrigger value="inventory">库存查询</TabsTrigger>
+          <TabsTrigger value="dashboard">{t('nav.dashboard')}</TabsTrigger>
+          <TabsTrigger value="orders">{t('nav.orders')}</TabsTrigger>
+          <TabsTrigger value="sales">{t('nav.sales')}</TabsTrigger>
+          <TabsTrigger value="purchase">{t('nav.purchase')}</TabsTrigger>
+          <TabsTrigger value="suppliers">{t('nav.suppliers')}</TabsTrigger>
+          <TabsTrigger value="products">{t('nav.products')}</TabsTrigger>
+          <TabsTrigger value="ai">{t('nav.ai')}</TabsTrigger>
+          <TabsTrigger value="inventory">{t('nav.inventory')}</TabsTrigger>
         </TabsList>
         
         <TabsContent value="dashboard" className="mt-0 space-y-6">
@@ -89,8 +91,8 @@ const Index = () => {
         
         <TabsContent value="inventory" className="mt-0">
           <div className="p-4 bg-white rounded-lg shadow">
-            <h2 className="text-xl font-bold mb-4">库存查询</h2>
-            <p className="text-muted-foreground">此功能正在开发中，敬请期待。</p>
+            <h2 className="text-xl font-bold mb-4">{t('nav.inventory')}</h2>
+            <p className="text-muted-foreground">{t('common.comingSoon', '此功能正在开发中，敬请期待。')}</p>
           </div>
         </TabsContent>
       </Tabs>

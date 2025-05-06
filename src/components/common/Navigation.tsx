@@ -1,6 +1,5 @@
 
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { useNavigate, useLocation } from 'react-router-dom';
 import {
   Sidebar,
@@ -25,10 +24,12 @@ import {
   Users
 } from 'lucide-react';
 import { toast } from 'sonner';
+import { useTranslation } from 'react-i18next';
 
 export const Navigation = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const { t } = useTranslation();
 
   const handleNavigation = (tabId: string) => {
     // 导航到主页并通知需要切换标签
@@ -36,32 +37,18 @@ export const Navigation = () => {
     // 使用事件自定义事件来进行组件间通信
     const event = new CustomEvent('switch-tab', { detail: { tab: tabId } });
     window.dispatchEvent(event);
-    toast.info(`切换到${getTabName(tabId)}`);
-  };
-
-  const getTabName = (tabId: string) => {
-    switch(tabId) {
-      case 'dashboard': return '数据中心';
-      case 'orders': return '订单导入';
-      case 'sales': return '销售订单';
-      case 'purchase': return '采购订单';
-      case 'suppliers': return '供应商管理';
-      case 'products': return '产品编码';
-      case 'ai': return 'AI 洞察';
-      case 'inventory': return '库存查询';
-      default: return tabId;
-    }
+    toast.info(`${t('common.switch')} ${t(`nav.${tabId}`)}`);
   };
 
   const menuItems = [
-    { title: '数据中心', icon: Database, id: 'dashboard' },
-    { title: '订单导入', icon: Tag, id: 'orders' },
-    { title: '销售订单', icon: FileText, id: 'sales' },
-    { title: '采购订单', icon: ChartBar, id: 'purchase' },
-    { title: '供应商管理', icon: Users, id: 'suppliers' },
-    { title: '产品编码', icon: Package, id: 'products' },
-    { title: 'AI 洞察', icon: Brain, id: 'ai' },
-    { title: '库存查询', icon: Search, id: 'inventory' },
+    { title: t('nav.dashboard'), icon: Database, id: 'dashboard' },
+    { title: t('nav.orders'), icon: Tag, id: 'orders' },
+    { title: t('nav.sales'), icon: FileText, id: 'sales' },
+    { title: t('nav.purchase'), icon: ChartBar, id: 'purchase' },
+    { title: t('nav.suppliers'), icon: Users, id: 'suppliers' },
+    { title: t('nav.products'), icon: Package, id: 'products' },
+    { title: t('nav.ai'), icon: Brain, id: 'ai' },
+    { title: t('nav.inventory'), icon: Search, id: 'inventory' },
   ];
 
   return (
@@ -75,7 +62,7 @@ export const Navigation = () => {
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>主导航</SidebarGroupLabel>
+          <SidebarGroupLabel>{t('nav.mainNavigation', '主导航')}</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {menuItems.map((item) => (
