@@ -59,7 +59,11 @@
     "timeRange": "选择时间范围",
     "startDate": "开始日期",
     "endDate": "结束日期",
-    "startImport": "开始导入"
+    "startImport": "开始导入",
+    "fileCount": "文件数",
+    "recordCount": "记录数",
+    "uploadSuccess": "成功上传 {{count}} 个订单数据文件",
+    "apiImportStarted": "API导入已启动，请检查导入状态"
   },
   "sales": {
     "title": "销售订单详情",
@@ -68,7 +72,8 @@
     "createdDate": "创建日期",
     "sourcePlatform": "来源平台",
     "items": "商品数",
-    "amount": "金额"
+    "amount": "金额",
+    "viewOrderDetails": "查看订单 {{id}} 详情"
   },
   "purchase": {
     "title": "采购订单管理",

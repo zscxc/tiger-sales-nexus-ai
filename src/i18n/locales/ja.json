@@ -59,7 +59,11 @@
     "timeRange": "期間を選択",
     "startDate": "開始日",
     "endDate": "終了日",
-    "startImport": "インポート開始"
+    "startImport": "インポート開始",
+    "fileCount": "ファイル数",
+    "recordCount": "レコード数",
+    "uploadSuccess": "{{count}}個の注文データファイルが正常にアップロードされました",
+    "apiImportStarted": "APIインポートが開始されました。インポート状況を確認してください"
   },
   "sales": {
     "title": "販売注文詳細",
@@ -68,7 +72,8 @@
     "createdDate": "作成日",
     "sourcePlatform": "ソースプラットフォーム",
     "items": "アイテム数",
-    "amount": "金額"
+    "amount": "金額",
+    "viewOrderDetails": "注文 {{id}} の詳細を表示"
   },
   "purchase": {
     "title": "購買発注管理",

@@ -5,18 +5,20 @@ import { DataTable } from '@/components/common/DataTable';
 import { Button } from '@/components/ui/button';
 import { FileText } from 'lucide-react';
 import { toast } from 'sonner';
+import { useTranslation } from 'react-i18next';
 
 export const SalesOrderDetails = () => {
   const [selectedOrder, setSelectedOrder] = useState<string | null>(null);
+  const { t } = useTranslation();
 
   const columns = [
-    { key: 'id', header: '销售订单号', width: '15%' },
-    { key: 'date', header: '创建日期', width: '15%' },
-    { key: 'platform', header: '来源平台', width: '15%' },
-    { key: 'items', header: '商品数', width: '10%' },
-    { key: 'amount', header: '金额', width: '15%' },
-    { key: 'status', header: '状态', width: '15%' },
-    { key: 'actions', header: '操作', width: '15%' },
+    { key: 'id', header: t('sales.orderNumber'), width: '15%' },
+    { key: 'date', header: t('sales.createdDate'), width: '15%' },
+    { key: 'platform', header: t('sales.sourcePlatform'), width: '15%' },
+    { key: 'items', header: t('sales.items'), width: '10%' },
+    { key: 'amount', header: t('sales.amount'), width: '15%' },
+    { key: 'status', header: t('common.status'), width: '15%' },
+    { key: 'actions', header: t('common.actions'), width: '15%' },
   ];
 
   // Sample data
@@ -31,7 +33,7 @@ export const SalesOrderDetails = () => {
       actions: (
         <Button size="sm" variant="outline" onClick={() => viewOrderDetails('SO-2023-0001')}>
           <FileText className="h-3 w-3 mr-1" />
-          详情
+          {t('common.view')}
         </Button>
       ),
     },
@@ -45,7 +47,7 @@ export const SalesOrderDetails = () => {
       actions: (
         <Button size="sm" variant="outline" onClick={() => viewOrderDetails('SO-2023-0002')}>
           <FileText className="h-3 w-3 mr-1" />
-          详情
+          {t('common.view')}
         </Button>
       ),
     },
@@ -59,7 +61,7 @@ export const SalesOrderDetails = () => {
       actions: (
         <Button size="sm" variant="outline" onClick={() => viewOrderDetails('SO-2023-0003')}>
           <FileText className="h-3 w-3 mr-1" />
-          详情
+          {t('common.view')}
         </Button>
       ),
     },
@@ -67,14 +69,14 @@ export const SalesOrderDetails = () => {
 
   const viewOrderDetails = (id: string) => {
     setSelectedOrder(id);
-    toast.info(`查看订单 ${id} 详情`);
+    toast.info(t('sales.viewOrderDetails', { id }));
   };
 
   return (
     <Card className="col-span-3">
       <CardHeader>
-        <CardTitle>销售订单详情</CardTitle>
-        <CardDescription>查看并管理来自各平台的销售订单</CardDescription>
+        <CardTitle>{t('sales.title')}</CardTitle>
+        <CardDescription>{t('sales.description')}</CardDescription>
       </CardHeader>
       <CardContent>
         <DataTable

@@ -59,7 +59,11 @@
     "timeRange": "Select time range",
     "startDate": "Start date",
     "endDate": "End date",
-    "startImport": "Start Import"
+    "startImport": "Start Import",
+    "fileCount": "File Count",
+    "recordCount": "Record Count",
+    "uploadSuccess": "Successfully uploaded {{count}} order data files",
+    "apiImportStarted": "API import started, please check import status"
   },
   "sales": {
     "title": "Sales Order Details",
@@ -68,7 +72,8 @@
     "createdDate": "Created Date",
     "sourcePlatform": "Source Platform",
     "items": "Items",
-    "amount": "Amount"
+    "amount": "Amount",
+    "viewOrderDetails": "View details of order {{id}}"
   },
   "purchase": {
     "title": "Purchase Order Management",

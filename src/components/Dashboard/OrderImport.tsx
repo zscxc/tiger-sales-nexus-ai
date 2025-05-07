@@ -8,8 +8,9 @@ import { toast } from 'sonner';
 import { Upload, FileUp, Plus } from 'lucide-react';
 import { DataTable } from '@/components/common/DataTable';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { useTranslation } from 'react-i18next';
 
-// 示例数据
+// Sample data
 const orderImportData = [
   { id: '1', date: '2025-05-01', platform: '亚马逊', status: '已完成', files: 2, records: 156 },
   { id: '2', date: '2025-05-02', platform: '乐天', status: '进行中', files: 1, records: 87 },
@@ -22,35 +23,36 @@ const orderImportData = [
 export const OrderImport = () => {
   const [importMethod, setImportMethod] = useState<'file' | 'api'>('file');
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const { t } = useTranslation();
 
   const handleFileUpload = (files: File[]) => {
     // In a real application, this would send the files to your backend
     console.log('Files to be uploaded:', files);
-    toast.success(`成功上传 ${files.length} 个订单数据文件`);
-    setIsDialogOpen(false); // 关闭对话框
+    toast.success(`${t('orderImport.uploadSuccess', { count: files.length })}`);
+    setIsDialogOpen(false); // Close dialog
   };
 
   const handleAPIImport = () => {
     // In a real application, this would trigger an API import
-    toast.success('API导入已启动，请检查导入状态');
-    setIsDialogOpen(false); // 关闭对话框
+    toast.success(t('orderImport.apiImportStarted'));
+    setIsDialogOpen(false); // Close dialog
   };
 
   const columns = [
-    { key: 'date', header: '导入日期', width: '20%' },
-    { key: 'platform', header: '平台', width: '15%' },
-    { key: 'files', header: '文件数', width: '15%' },
-    { key: 'records', header: '记录数', width: '15%' },
-    { key: 'status', header: '状态', width: '15%' },
-    { key: 'actions', header: '操作', width: '20%' },
+    { key: 'date', header: t('common.date'), width: '20%' },
+    { key: 'platform', header: t('common.platform'), width: '15%' },
+    { key: 'files', header: t('orderImport.fileCount'), width: '15%' },
+    { key: 'records', header: t('orderImport.recordCount'), width: '15%' },
+    { key: 'status', header: t('common.status'), width: '15%' },
+    { key: 'actions', header: t('common.actions'), width: '20%' },
   ];
 
   const dataWithActions = orderImportData.map(item => ({
     ...item,
     actions: (
       <div className="flex space-x-2">
-        <Button variant="outline" size="sm">查看</Button>
-        <Button variant="destructive" size="sm">删除</Button>
+        <Button variant="outline" size="sm">{t('common.view')}</Button>
+        <Button variant="destructive" size="sm">{t('common.delete')}</Button>
       </div>
     ),
   }));
@@ -59,29 +61,29 @@ export const OrderImport = () => {
     <Card>
       <CardHeader className="flex flex-row items-center justify-between">
         <div>
-          <CardTitle className="text-xl">订单数据导入</CardTitle>
+          <CardTitle className="text-xl">{t('orderImport.title')}</CardTitle>
           <CardDescription>
-            从平台导入销售订单数据。支持表格导入或API自动拉取。
+            {t('orderImport.description')}
           </CardDescription>
         </div>
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
           <DialogTrigger asChild>
             <Button className="bg-tiger-600 hover:bg-tiger-700">
               <Plus className="h-4 w-4 mr-2" />
-              导入订单数据
+              {t('orderImport.importOrderData')}
             </Button>
           </DialogTrigger>
           <DialogContent className="sm:max-w-[600px]">
             <DialogHeader>
-              <DialogTitle>订单数据导入</DialogTitle>
+              <DialogTitle>{t('orderImport.title')}</DialogTitle>
               <DialogDescription>
-                从平台导入销售订单数据。支持表格导入或API自动拉取。
+                {t('orderImport.description')}
               </DialogDescription>
             </DialogHeader>
             <Tabs value={importMethod} onValueChange={(value) => setImportMethod(value as 'file' | 'api')}>
               <TabsList className="grid w-full grid-cols-2">
-                <TabsTrigger value="file">文件导入</TabsTrigger>
-                <TabsTrigger value="api">API导入</TabsTrigger>
+                <TabsTrigger value="file">{t('orderImport.fileImport')}</TabsTrigger>
+                <TabsTrigger value="api">{t('orderImport.apiImport')}</TabsTrigger>
               </TabsList>
               <TabsContent value="file" className="pt-4">
                 <FileUploadZone
@@ -91,19 +93,21 @@ export const OrderImport = () => {
                   className="mb-4"
                 />
                 <div className="flex justify-end">
-                  <Button variant="outline" className="mr-2" onClick={() => setIsDialogOpen(false)}>取消</Button>
+                  <Button variant="outline" className="mr-2" onClick={() => setIsDialogOpen(false)}>
+                    {t('common.cancel')}
+                  </Button>
                   <Button 
                     onClick={() => handleFileUpload([])} 
                     className="bg-tiger-600 hover:bg-tiger-700"
                   >
                     <FileUp className="h-4 w-4 mr-2" />
-                    导入订单
+                    {t('common.import')}
                   </Button>
                 </div>
               </TabsContent>
               <TabsContent value="api" className="space-y-4 pt-4">
                 <div className="space-y-2">
-                  <h3 className="text-sm font-medium">选择要导入的平台</h3>
+                  <h3 className="text-sm font-medium">{t('orderImport.selectPlatforms')}</h3>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
                     {['雅虎', '乐天', '亚马逊'].map((platform) => (
                       <div key={platform} className="flex items-center space-x-2">
@@ -118,10 +122,10 @@ export const OrderImport = () => {
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <h3 className="text-sm font-medium">选择时间范围</h3>
+                  <h3 className="text-sm font-medium">{t('orderImport.timeRange')}</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <label htmlFor="start-date" className="text-xs text-muted-foreground">开始日期</label>
+                      <label htmlFor="start-date" className="text-xs text-muted-foreground">{t('orderImport.startDate')}</label>
                       <input
                         type="date"
                         id="start-date"
@@ -129,7 +133,7 @@ export const OrderImport = () => {
                       />
                     </div>
                     <div>
-                      <label htmlFor="end-date" className="text-xs text-muted-foreground">结束日期</label>
+                      <label htmlFor="end-date" className="text-xs text-muted-foreground">{t('orderImport.endDate')}</label>
                       <input
                         type="date"
                         id="end-date"
@@ -139,13 +143,15 @@ export const OrderImport = () => {
                   </div>
                 </div>
                 <div className="flex justify-end">
-                  <Button variant="outline" className="mr-2" onClick={() => setIsDialogOpen(false)}>取消</Button>
+                  <Button variant="outline" className="mr-2" onClick={() => setIsDialogOpen(false)}>
+                    {t('common.cancel')}
+                  </Button>
                   <Button 
                     onClick={handleAPIImport} 
                     className="bg-tiger-600 hover:bg-tiger-700"
                   >
                     <FileUp className="h-4 w-4 mr-2" />
-                    开始导入
+                    {t('orderImport.startImport')}
                   </Button>
                 </div>
               </TabsContent>
