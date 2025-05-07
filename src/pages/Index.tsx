@@ -9,13 +9,14 @@ import { AnalyticsDashboard } from '@/components/Dashboard/AnalyticsDashboard';
 import { AIInsights } from '@/components/Dashboard/AIInsights';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { BasicSalesData } from '@/components/Dashboard/BasicSalesData';
+import { SalesOrderManagement } from '@/components/Dashboard/SalesOrderManagement';
 import { SalesOrderDetails } from '@/components/Dashboard/SalesOrderDetails';
-import { PurchaseOrderDetails } from '@/components/Dashboard/PurchaseOrderDetails';
 import { SupplierManagement } from '@/components/Dashboard/SupplierManagement';
 import { useTranslation } from 'react-i18next';
 
 const Index = () => {
   const [activeTab, setActiveTab] = useState('dashboard');
+  const [selectedSalesOrder, setSelectedSalesOrder] = useState<string | null>(null);
   const { t } = useTranslation();
 
   // 监听从侧边栏发来的切换标签事件
@@ -23,6 +24,8 @@ const Index = () => {
     const handleSwitchTab = (e: CustomEvent) => {
       if (e.detail && e.detail.tab) {
         setActiveTab(e.detail.tab);
+        // Reset any selected states when switching tabs
+        setSelectedSalesOrder(null);
       }
     };
 
@@ -34,6 +37,10 @@ const Index = () => {
       window.removeEventListener('switch-tab', handleSwitchTab as EventListener);
     };
   }, []);
+
+  const handleViewSalesOrderDetails = (id: string) => {
+    setSelectedSalesOrder(id);
+  };
 
   return (
     <DashboardLayout>
@@ -66,15 +73,18 @@ const Index = () => {
         </TabsContent>
         
         <TabsContent value="sales" className="mt-0">
-          <SalesOrderDetails />
+          {selectedSalesOrder ? (
+            <SalesOrderDetails 
+              orderId={selectedSalesOrder} 
+              onBack={() => setSelectedSalesOrder(null)} 
+            />
+          ) : (
+            <SalesOrderManagement onViewDetails={handleViewSalesOrderDetails} />
+          )}
         </TabsContent>
         
         <TabsContent value="purchase" className="mt-0">
           <PurchaseOrders />
-        </TabsContent>
-        
-        <TabsContent value="purchase-details" className="mt-0">
-          <PurchaseOrderDetails />
         </TabsContent>
         
         <TabsContent value="suppliers" className="mt-0">
@@ -92,7 +102,7 @@ const Index = () => {
         <TabsContent value="inventory" className="mt-0">
           <div className="p-4 bg-white rounded-lg shadow">
             <h2 className="text-xl font-bold mb-4">{t('nav.inventory')}</h2>
-            <p className="text-muted-foreground">{t('common.comingSoon', '此功能正在开发中，敬请期待。')}</p>
+            <p className="text-muted-foreground">{t('common.comingSoon')}</p>
           </div>
         </TabsContent>
       </Tabs>
