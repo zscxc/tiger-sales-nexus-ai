@@ -39,7 +39,8 @@
     "actions": "アクション",
     "allPlatforms": "全プラットフォーム",
     "switch": "切り替えて",
-    "comingSoon": "この機能は開発中です。お楽しみに。"
+    "comingSoon": "この機能は開発中です。お楽しみに。",
+    "supplier": "仕入先"
   },
   "periods": {
     "day": "今日",
@@ -92,7 +93,9 @@
     "tigerCode": "Tiger本社コード",
     "addProduct": "製品追加",
     "mapped": "マッピング済み",
-    "unmapped": "未マッピング"
+    "unmapped": "未マッピング",
+    "price": "価格",
+    "quantity": "数量"
   },
   "language": {
     "selector": "言語"

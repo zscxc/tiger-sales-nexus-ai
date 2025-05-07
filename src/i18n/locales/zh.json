@@ -39,7 +39,8 @@
     "actions": "操作",
     "allPlatforms": "全部平台",
     "switch": "切换到",
-    "comingSoon": "此功能正在开发中，敬请期待。"
+    "comingSoon": "此功能正在开发中，敬请期待。",
+    "supplier": "供应商"
   },
   "periods": {
     "day": "今日",
@@ -92,7 +93,9 @@
     "tigerCode": "Tiger总部编码",
     "addProduct": "新增产品",
     "mapped": "已映射",
-    "unmapped": "未映射"
+    "unmapped": "未映射",
+    "price": "价格",
+    "quantity": "数量"
   },
   "language": {
     "selector": "语言"

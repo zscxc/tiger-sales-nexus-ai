@@ -39,7 +39,8 @@
     "actions": "Actions",
     "allPlatforms": "All Platforms",
     "switch": "Switch to",
-    "comingSoon": "This feature is in development. Coming soon."
+    "comingSoon": "This feature is in development. Coming soon.",
+    "supplier": "Supplier"
   },
   "periods": {
     "day": "Today",
@@ -92,7 +93,9 @@
     "tigerCode": "Tiger HQ Code",
     "addProduct": "Add Product",
     "mapped": "Mapped",
-    "unmapped": "Unmapped"
+    "unmapped": "Unmapped",
+    "price": "Price",
+    "quantity": "Quantity"
   },
   "language": {
     "selector": "Language"
