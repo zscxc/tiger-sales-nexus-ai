@@ -12,6 +12,7 @@ import { BasicSalesData } from '@/components/Dashboard/BasicSalesData';
 import { SalesOrderManagement } from '@/components/Dashboard/SalesOrderManagement';
 import { SalesOrderDetails } from '@/components/Dashboard/SalesOrderDetails';
 import { SupplierManagement } from '@/components/Dashboard/SupplierManagement';
+import { ECBusinessReport } from '@/components/Dashboard/ECBusinessReport';
 import { useTranslation } from 'react-i18next';
 
 const Index = () => {
@@ -59,6 +60,7 @@ const Index = () => {
           <TabsTrigger value="products">{t('nav.products')}</TabsTrigger>
           <TabsTrigger value="ai">{t('nav.ai')}</TabsTrigger>
           <TabsTrigger value="inventory">{t('nav.inventory')}</TabsTrigger>
+          <TabsTrigger value="reports">{t('nav.reports')}</TabsTrigger>
         </TabsList>
         
         <TabsContent value="dashboard" className="mt-0 space-y-6">
@@ -104,6 +106,10 @@ const Index = () => {
             <h2 className="text-xl font-bold mb-4">{t('nav.inventory')}</h2>
             <p className="text-muted-foreground">{t('common.comingSoon')}</p>
           </div>
+        </TabsContent>
+        
+        <TabsContent value="reports" className="mt-0">
+          <ECBusinessReport />
         </TabsContent>
       </Tabs>
     </DashboardLayout>

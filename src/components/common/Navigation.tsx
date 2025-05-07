@@ -21,7 +21,8 @@ import {
   Brain,
   Search,
   FileText,
-  Users
+  Users,
+  BarChart3
 } from 'lucide-react';
 import { toast } from 'sonner';
 import { useTranslation } from 'react-i18next';
@@ -49,6 +50,7 @@ export const Navigation = () => {
     { title: t('nav.products'), icon: Package, id: 'products' },
     { title: t('nav.ai'), icon: Brain, id: 'ai' },
     { title: t('nav.inventory'), icon: Search, id: 'inventory' },
+    { title: t('nav.reports'), icon: BarChart3, id: 'reports' }
   ];
 
   return (
